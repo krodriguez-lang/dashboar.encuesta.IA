@@ -1,0 +1,228 @@
+import React, { useState } from 'react';
+import { Calendar, Clock, Users, ChevronDown, ChevronUp } from 'lucide-react';
+
+const CronogramaColegios = () => {
+  const [expandedSchool, setExpandedSchool] = useState(null);
+
+  const cronograma = [
+    {
+      fecha: "Viernes 28 de noviembre",
+      colegios: [
+        {
+          nombre: "Argelia",
+          jornada: "7:00 am - 11:00 am",
+          enlaces: [
+            { equipo: "Bienestar", persona: "Paola Andrea López" },
+            { equipo: "Directivo Docente", persona: "Katerin Gámez" },
+            { equipo: "Administrativo", persona: "Jhon Shneider Meneses Valencia" }
+          ]
+        },
+        {
+          nombre: "Ciudad Chengdú",
+          jornada: "12:00 pm - 3:00 pm",
+          enlaces: [
+            { equipo: "Bienestar", persona: "Claudia Marcela Castro" },
+            { equipo: "Directivo Docente", persona: "Gina Liliana Luna Enciso" },
+            { equipo: "Administrativo", persona: "Edison Quiñonez" }
+          ]
+        }
+      ]
+    },
+    {
+      fecha: "Lunes 1 de diciembre",
+      colegios: [
+        {
+          nombre: "El Nogal",
+          jornada: "7:00 am - 11:00 am",
+          enlaces: [
+            { equipo: "Bienestar", persona: "Daniela Suárez Moreno" },
+            { equipo: "Directivo Docente", persona: "Yenny Edilma Gutiérrez" },
+            { equipo: "Administrativo", persona: "Lindsay Diaz Abadía" }
+          ]
+        },
+        {
+          nombre: "La Giralda",
+          jornada: "1:00 pm - 4:00 pm",
+          enlaces: [
+            { equipo: "Directivo Docente", persona: "Sindy Milena Chacón" },
+            { equipo: "Bienestar", persona: "María de los Ángeles Ramírez" },
+            { equipo: "Administrativo", persona: "Lina Fernanda Salazar" }
+          ]
+        }
+      ]
+    },
+    {
+      fecha: "Martes 2 de diciembre",
+      colegios: [
+        {
+          nombre: "Jaime Garzón",
+          jornada: "7:00 am - 11:00 am",
+          enlaces: [
+            { equipo: "Bienestar", persona: "Erika Daniela Pachon" },
+            { equipo: "Directivo Docente", persona: "Deicy Aguirre Florez" },
+            { equipo: "Administrativo", persona: "Cinthia Lorein Cortes" }
+          ]
+        },
+        {
+          nombre: "Jorge Isaacs",
+          jornada: "1:00 pm - 4:00 pm",
+          enlaces: [
+            { equipo: "Bienestar", persona: "Néstor Camilo Sosa Naranja" },
+            { equipo: "Directivo Docente", persona: "Lady Julieth Ospina Agudelo" },
+            { equipo: "Administrativo", persona: "Angela Andrea López Robayo" }
+          ]
+        }
+      ]
+    },
+    {
+      fecha: "Miércoles 3 de diciembre",
+      colegios: [
+        {
+          nombre: "Las Margaritas",
+          jornada: "7:00 am - 11:00 am",
+          enlaces: [
+            { equipo: "Directivo Docente", persona: "Slenny Silva S" },
+            { equipo: "Bienestar", persona: "Daniela Ospina" },
+            { equipo: "Administrativo", persona: "Sergio Parra" }
+          ]
+        },
+        {
+          nombre: "Laurel de Cera",
+          jornada: "1:00 pm - 3:00 pm",
+          enlaces: [
+            { equipo: "Directivo Docente", persona: "Carol Yojanna Caballero Rodríguez" },
+            { equipo: "Bienestar", persona: "Jorge Sebastián Cháves Murcia" },
+            { equipo: "Administrativo", persona: "Deisy Yurani Rodríguez Ruiz" }
+          ]
+        }
+      ]
+    },
+    {
+      fecha: "Jueves 4 de diciembre",
+      colegios: [
+        {
+          nombre: "Miravalle",
+          jornada: "7:00 am - 11:00 am",
+          enlaces: [
+            { equipo: "Bienestar", persona: "Monica Urrego" },
+            { equipo: "Directivo Docente", persona: "Cristian Camilo Moya" },
+            { equipo: "Administrativo", persona: "Andrés Igua" }
+          ]
+        },
+        {
+          nombre: "Parques de Bogotá",
+          jornada: "1:00 pm - 4:00 pm",
+          enlaces: [
+            { equipo: "Bienestar", persona: "María Paula Prada Gómez" },
+            { equipo: "Directivo Docente", persona: "Edith Janeth Mendoza Torres" },
+            { equipo: "Administrativo", persona: "Fabiola Latorre Jácome" }
+          ]
+        }
+      ]
+    },
+    {
+      fecha: "Viernes 5 de diciembre",
+      colegios: [
+        {
+          nombre: "Santiago de las Atalayas",
+          jornada: "7:00 am - 11:00 am",
+          enlaces: [
+            { equipo: "Bienestar", persona: "Juan Felipe Cardona Villada" },
+            { equipo: "Directivo Docente", persona: "Luis Fernando Gómez" },
+            { equipo: "Administrativo", persona: "Enadis Flórez" }
+          ]
+        }
+      ]
+    }
+  ];
+
+  const toggleSchool = (schoolKey) => {
+    setExpandedSchool(expandedSchool === schoolKey ? null : schoolKey);
+  };
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-6">
+      <div className="max-w-5xl mx-auto">
+        <div className="bg-white rounded-2xl shadow-xl p-8 mb-8">
+          <h1 className="text-4xl font-bold text-center text-indigo-900 mb-2 flex items-center justify-center gap-3">
+            <Calendar className="w-10 h-10" />
+            Cronograma de Revisión de Informes
+          </h1>
+          <p className="text-center text-gray-600">Haz clic en cada colegio para ver los detalles</p>
+        </div>
+
+        {cronograma.map((dia, diaIdx) => (
+          <div key={diaIdx} className="mb-6">
+            <div className="bg-indigo-600 text-white px-6 py-4 rounded-t-xl font-semibold text-lg flex items-center gap-2">
+              <Calendar className="w-5 h-5" />
+              {dia.fecha}
+            </div>
+            <div className="bg-white rounded-b-xl shadow-lg overflow-hidden">
+              {dia.colegios.map((colegio, colegioIdx) => {
+                const schoolKey = `${diaIdx}-${colegioIdx}`;
+                const isExpanded = expandedSchool === schoolKey;
+                
+                return (
+                  <div key={colegioIdx} className="border-b last:border-b-0">
+                    <button
+                      onClick={() => toggleSchool(schoolKey)}
+                      className="w-full px-6 py-4 flex items-center justify-between hover:bg-gray-50 transition-colors"
+                    >
+                      <div className="flex items-center gap-3">
+                        <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                        <span className="font-semibold text-gray-800 text-lg">
+                          {colegio.nombre}
+                        </span>
+                      </div>
+                      {isExpanded ? (
+                        <ChevronUp className="w-5 h-5 text-gray-600" />
+                      ) : (
+                        <ChevronDown className="w-5 h-5 text-gray-600" />
+                      )}
+                    </button>
+                    
+                    {isExpanded && (
+                      <div className="px-6 pb-6 bg-gray-50">
+                        <div className="bg-white rounded-lg p-5 shadow-sm">
+                          <div className="mb-4 flex items-center gap-2 text-gray-700">
+                            <Clock className="w-5 h-5 text-indigo-600" />
+                            <span className="font-semibold">Jornada:</span>
+                            <span>{colegio.jornada}</span>
+                          </div>
+                          
+                          <div className="border-t pt-4">
+                            <div className="flex items-center gap-2 mb-3 text-gray-700">
+                              <Users className="w-5 h-5 text-indigo-600" />
+                              <span className="font-semibold">Personas Enlace:</span>
+                            </div>
+                            <div className="space-y-3 ml-7">
+                              {colegio.enlaces.map((enlace, enlaceIdx) => (
+                                <div key={enlaceIdx} className="flex items-start gap-2">
+                                  <span className="text-green-600 font-bold">✓</span>
+                                  <div>
+                                    <span className="font-medium text-indigo-700">
+                                      Equipo {enlace.equipo}:
+                                    </span>
+                                    <span className="text-gray-700 ml-2">
+                                      {enlace.persona}
+                                    </span>
+                                  </div>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default CronogramaColegios;
